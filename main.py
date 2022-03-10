@@ -16,7 +16,7 @@ def convert(input_file_name, labels, output_file_name):
     spacy_json = {'classes': labels,
                   'annotations': []
                   }
-                  
+
     with open(input_file_name, 'r', encoding='utf-8') as input_file:
         input_file_lines = input_file.readlines()
         for input_file_line in input_file_lines:
@@ -48,6 +48,7 @@ def main():
         input_file = sys.argv[1]
         input_labels = open(sys.argv[2])
         labels = parse_labels(input_labels)
+        input_labels.close()
         output_file = sys.argv[3]
         return convert(input_file, labels, output_file)
     print("Not enough arguments! Needs: Input JSONL, Input Labels, Output File Name.")
